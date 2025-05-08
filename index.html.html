@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>واحد تحلیل ماموریتی</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Tahoma', sans-serif;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background-color: #1f2b50; /* سرمه‌ای */
+      color: white;
+      padding: 40px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 22px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 10px;
+    }
+
+    input[type="password"] {
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      width: 80%;
+      margin-bottom: 15px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    #result {
+      margin-top: 20px;
+    }
+
+    .error {
+      color: #ffaaaa;
+      font-weight: bold;
+    }
+
+    .qr-code {
+      margin-top: 20px;
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>واحد تحلیل ماموریتی</h1>
+    <input type="password" id="password" placeholder="رمز عبور را وارد کنید">
+    <br>
+    <button onclick="checkPassword()">تایید</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function checkPassword() {
+      const correctPassword = "SC-82-KF";
+      const entered = document.getElementById("password").value;
+      const resultDiv = document.getElementById("result");
+
+      if (entered === correctPassword) {
+        resultDiv.innerHTML = 
+          <p>دسترسی تایید شد. لطفاً کد زیر را ارائه دهید:</p>
+          <img src="https://api.qrserver.com/v1/create-qr-code/?data=SC-82-KF&size=200x200" alt="QR Code" class="qr-code">
+        ;
+      } else {
+        resultDiv.innerHTML = <p class="error">رمز اشتباه است.</p>;
+      }
+    }
+  </script>
+</body>
+</html>
